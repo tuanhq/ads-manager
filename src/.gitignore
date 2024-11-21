@@ -1,0 +1,28 @@
+# Maven specific
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# IDE specific
+.vscode/
+.idea/
+*.iml
+
+# Compiled files
+*.class
+
+# Logs and temporary files
+*.log
+*.log.*
+*.tmp
+
+# Package files
+*.jar
+*.war
+*.ear
