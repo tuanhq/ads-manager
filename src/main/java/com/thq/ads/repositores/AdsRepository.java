@@ -11,7 +11,8 @@ import com.thq.ads.dto.Ads;
 
 @Repository
 public interface AdsRepository extends JpaRepository<Ads, Long> {
-	public Ads findByName(String name);
+	public Ads findByTitle(String title);
+	
 	@Query(value = "SELECT * FROM ads LIMIT :limit OFFSET :offset", nativeQuery = true)
 	public List<Ads> findAdsWithOffset(@Param("limit") int limit, @Param("offset") int offset);
 	

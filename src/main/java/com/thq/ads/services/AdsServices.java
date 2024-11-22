@@ -26,6 +26,9 @@ public class AdsServices {
 	private FilterChain filterChain;
 	
 	private SecureRandom random = new SecureRandom();
+
+	@Autowired
+	private RedisCached redisCached;
 	
 	@Value("${app.limit_record:100}")
 	private int limit;
@@ -40,6 +43,12 @@ public class AdsServices {
 		
 		int index = random.nextInt(listAdsFitered.size()-1);
 		return listAdsFitered.get(index);
+	}
+
+	public void setToCache(User user, Ads ads) {	
+		long currentTime = System.currentTimeMillis()/1000;
+		redisCached.put("ADS_USER_VIEW"+user.getId()+ads.getId(), currentTime,3600*24);
+		redisCached.put("ADS_VIEW" + ads.getId(), (long)redisCached.get("ADS_VIEW" + ads.getId())+1,3600*24);
 	}
 
 }
